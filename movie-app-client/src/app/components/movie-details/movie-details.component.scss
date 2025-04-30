@@ -1,0 +1,84 @@
+.movie-details-container {
+    .backdrop img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+  
+    .movie-info {
+      display: flex;
+      align-items: flex-start;
+      padding: 20px;
+  
+      .poster {
+        width: 200px;
+        height: 300px;
+        margin-right: 20px;
+        border-radius: 8px;
+      }
+  
+      .text-info {
+        max-width: 600px;
+      }
+    }
+  
+    .cast-section {
+      padding: 20px;
+  
+      .cast-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: 20px;
+        margin-top: 10px;
+  
+        .actor-card {
+          text-align: center;
+  
+          img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+          }
+  
+          p {
+            font-weight: bold;
+            margin: 5px 0 0 0;
+          }
+  
+          small {
+            color: gray;
+          }
+        }
+      }
+    }
+  }
+
+  .poster-gallery{
+    padding: 20px;
+
+    .posters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 20px;
+      margin-top: 10px;
+
+      img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  .comments-section{
+    padding: 20px;
+  }
+
+  .comment{
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+  }
+  

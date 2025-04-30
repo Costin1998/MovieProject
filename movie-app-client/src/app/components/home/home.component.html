@@ -1,0 +1,54 @@
+  <div class="movies-container">
+    <div *ngIf="searchResults.length === 0">
+      <h1>Latest Movies</h1>
+  
+      <div *ngIf="latestMovies.length > 0; else loading">
+          <owl-carousel-o [options]="customOptions">
+              <ng-container *ngFor="let movie of latestMovies">
+                <ng-template carouselSlide>
+                  <img style="width: 200px; height: 250px;" (click)="openDetails(movie.id)" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+                  <h4 style="margin-bottom: 5px;">{{ movie.title }}</h4>
+                  <p style="margin: 0;">{{ movie.release_date }}</p>
+                </ng-template>
+              </ng-container>
+            </owl-carousel-o>
+      </div>
+  
+      <h1>Top Movies</h1>
+  
+      <div *ngIf="topMovies.length > 0; else loading">
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let movie of topMovies">
+              <ng-template carouselSlide>
+                <img style="width: 200px; height: 250px;" (click)="openDetails(movie.id)" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+                <h4 style="margin-bottom: 5px;">{{ movie.title }}</h4>
+                <p style="margin: 0;">{{ movie.release_date }}</p>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+    </div>
+    
+      <ng-template #loading>
+        <p>Loading movies...</p>
+      </ng-template>
+    </div>
+    <div *ngIf="searchResults.length > 0">
+      <h1>Latest Movies</h1>
+
+      <div *ngIf="searchResults.length > 0; else loading">
+        <owl-carousel-o [options]="customOptions">
+            <ng-container *ngFor="let movie of searchResults">
+              <ng-template carouselSlide>
+                <img style="width: 200px; height: 250px;" (click)="openDetails(movie.id)" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}">
+                <h4 style="margin-bottom: 5px;">{{ movie.title }}</h4>
+                <p style="margin: 0;">{{ movie.release_date }}</p>
+              </ng-template>
+            </ng-container>
+          </owl-carousel-o>
+      </div>
+      <ng-template #loading>
+        <p>Loading movies...</p>
+      </ng-template>
+    </div>
+  </div>
+  

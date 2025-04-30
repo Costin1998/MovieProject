@@ -1,0 +1,26 @@
+<mat-toolbar>
+  <a class="logo" routerLink="/">MovieApp</a>
+
+  <button mat-button [matMenuTriggerFor]="genresMenu" #menuTrigger="matMenuTrigger" (mouseenter)="openMenu(menuTrigger)" (mouseleave)="closeMenu(menuTrigger)">
+    Genres
+  </button>
+  
+  <mat-menu #genresMenu="matMenu" [hasBackdrop]="false">
+    <div (mouseenter)="onMenuEnter(menuTrigger)" (mouseleave)="onMenuLeave(menuTrigger)">
+      <ng-container *ngFor="let genre of genres">
+        <button mat-menu-item (click)="navigateToGenre(genre.id)">
+          {{ genre.name }}
+        </button>
+      </ng-container>
+    </div>
+  </mat-menu>
+
+  <span class="spacer"></span>
+
+  <mat-form-field appearance="outline">
+    <input matInput placeholder="Search movies..." (keyup.enter)="searchMovie(searchInput.value)" #searchInput>
+  </mat-form-field>
+
+  <button *ngIf="!isLoggedIn" mat-raised-button color="accent" (click)="goToLogin()">Login</button>
+  <button *ngIf="isLoggedIn" mat-raised-button color="accent" (click)="logOut()">Logout</button>
+</mat-toolbar>

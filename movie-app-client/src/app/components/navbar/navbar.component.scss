@@ -1,0 +1,32 @@
+.logo {
+    font-weight: bold;
+    font-size: 24px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.nav-links a {
+margin-right: 15px;
+}
+
+.spacer {
+flex: 1 1 auto;
+}
+
+.mat-form-field {
+    height: 40px;
+    width: 500px;
+  }
+  
+::ng-deep .mat-form-field-flex {
+    min-height: 40px !important;
+}
+
+::ng-deep .mat-form-field-infix {
+    padding: 0.1em 0 !important;
+    border-top-width: 0.5em !important;
+}
+
+::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0.8em;
+}

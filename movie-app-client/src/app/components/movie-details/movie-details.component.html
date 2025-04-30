@@ -1,0 +1,61 @@
+<div *ngIf="movie" class="movie-details-container">
+    <div class="backdrop">
+      <img [src]="'https://image.tmdb.org/t/p/original' + movie.backdrop_path" alt="Backdrop">
+    </div>
+  
+    <div class="movie-info">
+      <img class="poster" [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="Poster">
+      <div class="text-info">
+        <h1>{{ movie.title }}</h1>
+        <p><strong>Release Date:</strong> {{ movie.release_date }}</p>
+        <p><strong>Overview:</strong> {{ movie.overview }}</p>
+      </div>
+    </div>
+
+    <div class="poster-gallery" *ngIf="posters.length > 0">
+        <h2>Posters</h2>
+        <div class="posters-grid">
+          <img *ngFor="let poster of posters" [src]="'https://image.tmdb.org/t/p/w500' + poster.file_path" alt="Poster">
+        </div>
+      </div>
+  
+    <div class="cast-section">
+      <h2>Cast</h2>
+      <div class="cast-grid">
+        <div class="actor-card" *ngFor="let actor of cast">
+          <img [src]="actor.profile_path ? 'https://image.tmdb.org/t/p/w200' + actor.profile_path : 'assets/no-image.jpg'" alt="{{ actor.name }}">
+          <p>{{ actor.name }}</p>
+          <small>as {{ actor.character }}</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="comments-section">
+      <h2>Comments</h2>
+    
+      <!-- List of comments -->
+        <div class="comment" *ngFor="let comment of comments">
+          <p><strong>{{ comment.userName }}</strong>: {{ comment.createdAt }}</p>
+          <p>{{ comment.content }}</p>
+        </div>
+    
+      <!-- No comments yet -->
+      <ng-template #noComments>
+        <p>No comments yet. Be the first to comment!</p>
+      </ng-template>
+    
+      <!-- Add a new comment (only for logged in users) -->
+      <div *ngIf="isLoggedIn" class="add-comment-form">
+        <textarea [(ngModel)]="newComment" placeholder="Write your comment here..."></textarea>
+        <div>
+          <button (click)="postComment()">Post Comment</button>
+        </div>
+      </div>
+    
+      <div *ngIf="!isLoggedIn" class="login-prompt">
+        <p>Please <a routerLink="/login">login</a> to leave a comment.</p>
+      </div>
+    </div>
+    
+  </div>
+  
